@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shaira Gulifardo — VA & Lead Generation Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0D2B55; --navy-deep: #071a35; --gold: #C9A84C;
+  --gold-light: #e8c97a; --gold-pale: #f5ecd4;
+  --cream: #FAF7F2; --warm: #F2EBE0;
+  --text: #1C1610; --muted: #6B5F52; --white: #ffffff;
+}
+html { scroll-behavior: smooth; }
+body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 5%; background: rgba(250,247,242,.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(201,168,76,.15); animation: slideDown .8s cubic-bezier(.4,0,.2,1) both; }
+.nav-logo { font-family: "Playfair Display",serif; font-size: 1.4rem; font-weight: 700; color: var(--navy); }
+.nav-logo sup { font-size: .55rem; font-weight: 500; letter-spacing: .1em; color: var(--gold); text-transform: uppercase; vertical-align: super; margin-left: .2rem; }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; }
+.nav-links a { font-size: .78rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-decoration: none; position: relative; transition: color .22s; }
+.nav-links a::after { content: ""; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width .28s; }
+.nav-links a:hover { color: var(--navy); }
+.nav-links a:hover::after { width: 100%; }
+
+#hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 460px; align-items: end; padding: 0 0 0 6%; position: relative; overflow: hidden; background: var(--navy-deep); }
+.hero-bg-glow { position: absolute; bottom: -20%; right: 5%; width: 50vw; height: 110vh; background: radial-gradient(ellipse at 60% 80%, rgba(201,168,76,.07) 0%, transparent 70%); z-index: 0; pointer-events: none; }
+.hero-lines { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.hero-lines span { position: absolute; background: rgba(201,168,76,.06); animation: lineDrift 14s linear infinite; }
+.hero-lines span:nth-child(1) { width: 1px; height: 60%; top: 0; left: 12%; animation-delay: 0s; }
+.hero-lines span:nth-child(2) { width: 1px; height: 45%; top: 15%; left: 30%; animation-delay: 4s; }
+.hero-lines span:nth-child(3) { width: 1px; height: 55%; top: 0; left: 50%; animation-delay: 8s; }
+.hero-lines span:nth-child(4) { width: 1px; height: 38%; top: 20%; left: 68%; animation-delay: 2s; }
+@keyframes lineDrift { 0% { transform: translateY(-100%); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(120vh); opacity: 0; } }
+
+.hero-text { position: relative; z-index: 2; padding-bottom: 8rem; animation: heroTextIn 1s .3s cubic-bezier(.4,0,.2,1) both; }
+.hero-label { display: inline-flex; align-items: center; gap: .8rem; font-size: .7rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; }
+.hero-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2.2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(1.5); } }
+.hero-name { font-family: "Playfair Display",serif; font-size: clamp(3.5rem,6.5vw,7rem); font-weight: 900; line-height: .9; color: var(--white); letter-spacing: -.03em; }
+.hero-name .line2 { font-style: italic; color: var(--gold); display: block; margin-top: .05em; }
+.hero-divider { display: flex; align-items: center; gap: 1.2rem; margin-top: 1.8rem; }
+.hero-divider-line { flex: 0 0 40px; height: 1px; background: var(--gold); opacity: .6; }
+.hero-divider p { font-size: .78rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.45); }
+.hero-desc { margin-top: 2rem; max-width: 420px; font-size: .97rem; line-height: 1.82; color: rgba(255,255,255,.5); }
+.no-coldcall { display: inline-flex; align-items: center; gap: .55rem; margin-top: 1.4rem; background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.25); border-radius: 100px; padding: .45rem 1rem; font-size: .72rem; font-weight: 600; letter-spacing: .06em; color: var(--gold-light); }
+.no-coldcall svg { width: 14px; height: 14px; }
+.hero-contact-row { display: flex; flex-direction: column; gap: .6rem; margin-top: 1.8rem; }
+.hero-contact-item { display: flex; align-items: center; gap: .7rem; font-size: .82rem; color: rgba(255,255,255,.45); }
+.hero-contact-item svg { width: 15px; height: 15px; flex-shrink: 0; opacity: .7; }
+.hero-contact-item a { color: rgba(255,255,255,.55); text-decoration: none; transition: color .2s; }
+.hero-contact-item a:hover { color: var(--gold); }
+.hero-cta-row { display: flex; gap: .8rem; margin-top: 2.4rem; flex-wrap: wrap; }
+.btn-gold { background: var(--gold); color: var(--navy-deep); padding: .85rem 1.8rem; border-radius: 4px; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--gold); transition: all .28s; display: inline-flex; align-items: center; gap: .5rem; }
+.btn-gold:hover { background: transparent; color: var(--gold); }
+.btn-ghost { background: transparent; color: rgba(255,255,255,.65); padding: .85rem 1.8rem; border-radius: 4px; font-size: .75rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; border: 2px solid rgba(255,255,255,.12); transition: all .28s; display: inline-flex; align-items: center; gap: .5rem; }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.btn-linkedin { background: transparent; color: rgba(255,255,255,.65); padding: .85rem 1.8rem; border-radius: 4px; font-size: .75rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; border: 2px solid rgba(255,255,255,.12); transition: all .28s; display: inline-flex; align-items: center; gap: .5rem; }
+.btn-linkedin:hover { border-color: #0A66C2; color: #0A66C2; }
+.btn-resume { background: transparent; color: var(--gold); padding: .85rem 1.8rem; border-radius: 4px; font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; border: 2px solid rgba(201,168,76,.4); transition: all .28s; display: inline-flex; align-items: center; gap: .5rem; }
+.btn-resume:hover { background: var(--gold); color: var(--navy-deep); }
+
+.hero-photo-col { position: relative; z-index: 2; height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; overflow: hidden; }
+.photo-frame { width: 100%; flex: 1; position: relative; overflow: hidden; }
+.photo-frame::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 30%; background: linear-gradient(to bottom, var(--navy-deep), transparent); z-index: 3; pointer-events: none; }
+.photo-frame::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 30%; background: linear-gradient(to top, var(--navy-deep), transparent); z-index: 3; pointer-events: none; }
+.photo-inner { width: 100%; height: 100%; position: relative; overflow: hidden; }
+.photo-inner img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.photo-accent { position: absolute; left: 0; top: 15%; bottom: 15%; width: 3px; background: linear-gradient(to bottom, transparent, var(--gold) 40%, var(--gold) 60%, transparent); z-index: 4; }
+.photo-tag { position: absolute; bottom: 1.8rem; left: -.5rem; z-index: 5; background: var(--gold); color: var(--navy-deep); font-size: .68rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; padding: .6rem 1.4rem; border-radius: 2px; box-shadow: 0 8px 28px rgba(0,0,0,.35); }
+.scroll-hint { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: .5rem; z-index: 10; }
+.scroll-hint span { font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+.scroll-bar { width: 1px; height: 44px; background: linear-gradient(to bottom, rgba(201,168,76,.8), transparent); animation: scrollPulse 2.2s ease-in-out infinite; }
+@keyframes scrollPulse { 0%, 100% { opacity: .8; } 50% { opacity: .3; } }
+
+section { padding: 7rem 6%; }
+.s-label { display: inline-flex; align-items: center; gap: .8rem; font-size: .68rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: .9rem; }
+.s-label::before { content: "//"; opacity: .5; }
+h2.display { font-family: "Playfair Display",serif; font-size: clamp(2.2rem,4vw,3.8rem); font-weight: 900; line-height: 1.08; letter-spacing: -.02em; color: var(--navy); }
+h2.display em { font-style: italic; color: var(--gold); }
+
+#about { background: var(--white); position: relative; overflow: hidden; }
+#about::after { content: "SHAI"; position: absolute; right: -1%; top: 50%; transform: translateY(-50%) rotate(90deg); font-family: "Playfair Display",serif; font-size: 10rem; font-weight: 900; color: rgba(13,43,85,.03); pointer-events: none; white-space: nowrap; }
+.about-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 6rem; align-items: start; margin-top: 4rem; }
+.about-text p { font-size: 1rem; line-height: 1.85; color: var(--muted); margin-bottom: 1.2rem; }
+.about-text p strong { color: var(--navy); font-weight: 600; }
+.about-chips { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2rem; }
+.chip { background: var(--warm); border: 1px solid rgba(201,168,76,.25); color: var(--navy); font-size: .75rem; font-weight: 500; padding: .4rem 1rem; border-radius: 100px; }
+.about-sidebar { display: flex; flex-direction: column; }
+.sidebar-block { padding: 1.5rem 0; border-bottom: 1px solid rgba(201,168,76,.15); }
+.sidebar-block:first-child { border-top: 1px solid rgba(201,168,76,.15); }
+.sidebar-block strong { display: block; font-size: .65rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: .4rem; }
+.sidebar-block p { font-size: .88rem; color: var(--text); line-height: 1.6; }
+
+#results { background: var(--navy); position: relative; overflow: hidden; padding: 6rem 6%; }
+#results .s-label { color: var(--gold-light); }
+#results h2.display { color: var(--white); margin-bottom: 1rem; }
+.results-sub { font-size: .95rem; color: rgba(255,255,255,.4); max-width: 520px; margin-bottom: 4rem; line-height: 1.75; }
+.results-sub strong { color: var(--gold-light); }
+.results-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; margin-bottom: 4rem; }
+.result-card { background: rgba(255,255,255,.04); border: 1px solid rgba(201,168,76,.15); border-radius: 16px; padding: 2rem 1.5rem; transition: background .3s, transform .28s; }
+.result-card:hover { background: rgba(255,255,255,.07); transform: translateY(-4px); }
+.result-icon { width: 38px; height: 38px; border-radius: 9px; background: rgba(201,168,76,.12); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; }
+.result-icon svg { width: 18px; height: 18px; color: var(--gold); }
+.result-number { font-family: "Playfair Display",serif; font-size: 2.6rem; font-weight: 900; color: var(--gold); line-height: 1; letter-spacing: -.02em; }
+.result-label { font-size: .78rem; font-weight: 600; color: var(--white); margin-top: .4rem; margin-bottom: .3rem; }
+.result-context { font-size: .72rem; color: rgba(255,255,255,.35); line-height: 1.55; }
+.results-proof { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
+.proof-card { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 14px; padding: 1.6rem; }
+.proof-card-label { font-size: .62rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: rgba(201,168,76,.55); margin-bottom: .9rem; }
+.proof-card h4 { font-size: .9rem; font-weight: 600; color: var(--white); margin-bottom: .5rem; }
+.proof-card p { font-size: .8rem; color: rgba(255,255,255,.4); line-height: 1.65; }
+.proof-tag-row { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
+.proof-tag { background: rgba(201,168,76,.1); color: var(--gold-light); font-size: .65rem; font-weight: 600; padding: .2rem .6rem; border-radius: 4px; }
+
+#experience { background: var(--warm); }
+.exp-timeline { margin-top: 4rem; display: flex; flex-direction: column; position: relative; }
+.exp-timeline::before { content: ""; position: absolute; left: 11px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--gold), rgba(201,168,76,.1)); }
+.exp-item { display: grid; grid-template-columns: 24px 1fr; gap: 2rem; position: relative; padding-bottom: 3rem; }
+.exp-item:last-child { padding-bottom: 0; }
+.exp-dot { width: 24px; height: 24px; border-radius: 50%; background: var(--navy); border: 3px solid var(--gold); flex-shrink: 0; margin-top: .2rem; position: relative; z-index: 1; }
+.exp-dot.current { background: var(--gold); }
+.exp-content { background: var(--white); border-radius: 14px; padding: 1.8rem 2rem; border: 1px solid rgba(201,168,76,.15); transition: box-shadow .25s; }
+.exp-content:hover { box-shadow: 0 10px 32px rgba(13,43,85,.08); }
+.exp-badge { display: inline-block; background: rgba(201,168,76,.12); color: #7a5a1a; font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: .25rem .7rem; border-radius: 4px; margin-bottom: .6rem; }
+.exp-badge.current-badge { background: rgba(13,43,85,.1); color: var(--navy); }
+.exp-company { font-family: "Playfair Display",serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: .2rem; }
+.exp-role { font-size: .82rem; font-weight: 500; color: var(--muted); margin-bottom: .2rem; }
+.exp-date { font-size: .72rem; color: var(--gold); font-weight: 600; letter-spacing: .06em; margin-bottom: 1rem; }
+.exp-list { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+.exp-list li { font-size: .84rem; color: var(--muted); line-height: 1.65; padding-left: 1.2rem; position: relative; }
+.exp-list li::before { content: "▸"; position: absolute; left: 0; color: var(--gold); font-size: .7rem; top: .2rem; }
+
+#skills { background: var(--navy-deep); position: relative; overflow: hidden; }
+#skills .s-label { color: var(--gold-light); }
+#skills h2.display { color: var(--white); }
+#skills h2.display em { color: var(--gold); }
+.skills-bento { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-top: 4rem; }
+.sk-card { background: rgba(255,255,255,.04); border: 1px solid rgba(201,168,76,.1); border-radius: 16px; padding: 2rem; transition: background .3s, border-color .3s, transform .28s; position: relative; overflow: hidden; }
+.sk-card::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); transform: scaleX(0); transform-origin: left; transition: transform .4s ease; }
+.sk-card:hover { background: rgba(255,255,255,.07); border-color: rgba(201,168,76,.3); transform: translateY(-3px); }
+.sk-card:hover::after { transform: scaleX(1); }
+.sk-card.wide { grid-column: span 2; }
+.sk-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(201,168,76,.12); display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem; }
+.sk-icon svg { width: 20px; height: 20px; color: var(--gold); }
+.sk-card h3 { font-size: .95rem; font-weight: 600; color: var(--white); margin-bottom: .6rem; }
+.sk-card p { font-size: .83rem; color: rgba(255,255,255,.45); line-height: 1.68; }
+.sk-tools { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+.sk-tool { background: rgba(201,168,76,.1); color: var(--gold-light); font-size: .67rem; font-weight: 500; padding: .25rem .7rem; border-radius: 4px; }
+.sk-sample { margin-top: 1rem; border-top: 1px solid rgba(255,255,255,.06); padding-top: 1rem; }
+.sk-sample-label { font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(201,168,76,.6); margin-bottom: .5rem; }
+.sk-sample-msg { background: rgba(255,255,255,.05); border-left: 2px solid var(--gold); border-radius: 0 8px 8px 0; padding: .7rem .9rem; font-size: .77rem; color: rgba(255,255,255,.55); line-height: 1.65; font-style: italic; }
+
+#projects { background: var(--cream); }
+.projects-header { margin-bottom: 4rem; }
+.proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.proj-card { border-radius: 16px; overflow: hidden; border: 1px solid rgba(201,168,76,.18); background: var(--white); transition: transform .32s cubic-bezier(.4,0,.2,1), box-shadow .32s; }
+.proj-card:hover { transform: translateY(-6px); box-shadow: 0 28px 60px rgba(13,43,85,.13); }
+.proj-top { padding: 2rem 2rem 1.6rem; background: var(--navy); position: relative; overflow: hidden; min-height: 150px; }
+.proj-top::before { content: attr(data-num); position: absolute; top: -.5rem; right: .8rem; font-family: "Playfair Display",serif; font-size: 5.5rem; font-weight: 900; color: rgba(201,168,76,.08); line-height: 1; }
+.proj-top::after { content: ""; position: absolute; width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,.1), transparent); bottom: -50px; right: -30px; }
+.proj-badge { display: inline-block; background: rgba(201,168,76,.18); color: var(--gold-light); font-size: .63rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: .28rem .7rem; border-radius: 4px; margin-bottom: .9rem; }
+.proj-top h3 { font-family: "Playfair Display",serif; font-size: 1.05rem; font-weight: 700; color: var(--white); line-height: 1.38; position: relative; z-index: 1; }
+.proj-body { padding: 1.6rem 2rem 2rem; }
+.proj-body p { font-size: .85rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.2rem; }
+.proj-results { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.2rem; }
+.result-pill { background: var(--gold-pale); color: #7a5a1a; font-size: .68rem; font-weight: 700; padding: .3rem .9rem; border-radius: 100px; }
+.proj-stack { display: flex; flex-wrap: wrap; gap: .4rem; }
+.stack-tag { background: rgba(13,43,85,.07); color: var(--navy); font-size: .67rem; font-weight: 500; padding: .2rem .6rem; border-radius: 4px; }
+
+#testimonials { background: var(--warm); position: relative; overflow: hidden; }
+#testimonials::before { content: "\201C"; position: absolute; top: -3rem; left: 2%; font-family: "Playfair Display",serif; font-size: 22rem; font-weight: 900; color: rgba(201,168,76,.07); line-height: 1; pointer-events: none; }
+.testi-layout { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 4rem; }
+.testi-card { background: var(--white); border-radius: 16px; padding: 2.2rem; border: 1px solid rgba(201,168,76,.15); transition: transform .28s, box-shadow .28s; }
+.testi-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(13,43,85,.09); }
+.testi-stars { color: var(--gold); font-size: .85rem; letter-spacing: .08em; margin-bottom: 1.2rem; }
+.testi-quote { font-family: "Playfair Display",serif; font-size: .97rem; font-style: italic; line-height: 1.82; color: var(--text); margin-bottom: 1.8rem; }
+.testi-person { display: flex; align-items: center; gap: .85rem; }
+.testi-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .88rem; color: var(--gold); flex-shrink: 0; font-family: "Playfair Display",serif; }
+.testi-name { font-size: .85rem; font-weight: 600; color: var(--navy); }
+.testi-role { font-size: .7rem; color: var(--muted); margin-top: .1rem; }
+
+#contact { background: var(--navy-deep); position: relative; overflow: hidden; }
+#contact::before { content: ""; position: absolute; top: -30%; right: -15%; width: 55vw; height: 90vh; background: radial-gradient(ellipse, rgba(201,168,76,.06) 0%, transparent 70%); pointer-events: none; }
+#contact .s-label { color: var(--gold-light); }
+#contact h2.display { color: var(--white); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 6rem; align-items: start; margin-top: 4rem; }
+.contact-left p { font-size: .96rem; line-height: 1.82; color: rgba(255,255,255,.45); margin: 1.2rem 0 2rem; }
+.contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+.contact-icon { width: 44px; height: 44px; flex-shrink: 0; background: rgba(201,168,76,.08); border: 1px solid rgba(201,168,76,.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+.contact-icon svg { width: 18px; height: 18px; color: var(--gold); }
+.contact-detail a, .contact-detail span { font-size: .87rem; color: rgba(255,255,255,.55); text-decoration: none; line-height: 1.5; transition: color .2s; }
+.contact-detail a:hover { color: var(--gold); }
+.contact-detail strong { display: block; font-size: .65rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: .2rem; }
+.contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: .5rem; }
+.form-group label { font-size: .65rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.3); }
+.form-group input, .form-group textarea, .form-group select { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 10px; padding: .9rem 1.1rem; font-family: "Outfit",sans-serif; font-size: .9rem; color: var(--white); outline: none; transition: border .25s, background .25s; resize: none; }
+.form-group select option { background: var(--navy-deep); }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: rgba(201,168,76,.4); background: rgba(255,255,255,.07); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,.18); }
+.form-group textarea { min-height: 120px; }
+.btn-submit { align-self: flex-start; background: var(--gold); color: var(--navy-deep); border: none; cursor: pointer; padding: 1rem 2.6rem; border-radius: 5px; font-family: "Outfit",sans-serif; font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; transition: all .28s; }
+.btn-submit:hover { box-shadow: 0 12px 32px rgba(201,168,76,.35); transform: translateY(-2px); }
+.btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+.form-note { font-size: .72rem; color: rgba(255,255,255,.25); line-height: 1.6; }
+.form-success { display: none; background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.3); border-radius: 10px; padding: 1.2rem 1.5rem; color: var(--gold-light); font-size: .88rem; line-height: 1.6; align-items: center; gap: .8rem; }
+.form-success.show { display: flex; }
+.form-success svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+footer { background: #030e1c; padding: 2rem 6%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-family: "Playfair Display",serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+footer p { font-size: .73rem; color: rgba(255,255,255,.2); letter-spacing: .05em; }
+footer span { color: var(--gold); }
+
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .75s ease, transform .75s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes heroTextIn { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: translateX(0); } }
+
+@media (max-width: 960px) {
+  #hero { grid-template-columns: 1fr; }
+  .hero-photo-col { height: 70vw; min-height: 400px; order: -1; }
+  .hero-text { padding: 0 5% 4rem; }
+  .about-layout, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .skills-bento, .testi-layout, .results-proof { grid-template-columns: 1fr 1fr; }
+  .sk-card.wide { grid-column: span 1; }
+  .proj-grid { grid-template-columns: 1fr; }
+  .results-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .skills-bento, .testi-layout, .form-row, .results-proof { grid-template-columns: 1fr; }
+  .results-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.proj-screenshots{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(201,168,76,.12)}
+.proj-ss-pane{padding:1.4rem 1.6rem}
+.proj-ss-pane:first-child{border-right:1px solid rgba(201,168,76,.12)}
+.proj-ss-label{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(201,168,76,.6);margin-bottom:.7rem}
+.proj-ss-img{width:100%;border-radius:7px;border:1px solid rgba(201,168,76,.15);display:block}
+.proj-ss-caption{font-size:.7rem;color:var(--muted);margin-top:.5rem;line-height:1.5}
+@media(max-width:600px){.proj-screenshots{grid-template-columns:1fr}.proj-ss-pane:first-child{border-right:none;border-bottom:1px solid rgba(201,168,76,.12)}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Shaira<sup>&#10022;</sup></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg-glow"></div>
+  <div class="hero-lines"><span></span><span></span><span></span><span></span></div>
+  <div class="hero-text">
+    <p class="hero-label"><span class="hero-dot"></span>Available for remote work</p>
+    <h1 class="hero-name">Shaira<span class="line2">Gulifardo.</span></h1>
+    <div class="hero-divider"><div class="hero-divider-line"></div><p>Virtual Assistant &middot; Lead Generation Specialist</p></div>
+    <p class="hero-desc">I build outreach systems that find the right people, say the right thing, and turn cold lists into warm, qualified pipelines &mdash; one thoughtful message at a time.</p>
+    <div class="no-coldcall">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+      Message outreach only &mdash; no cold calls
+    </div>
+    <div class="hero-contact-row">
+      <div class="hero-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        <a href="mailto:gulifardoshaira@gmail.com">gulifardoshaira&#64;gmail.com</a>
+      </div>
+      <div class="hero-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+        <a href="https://wa.me/639270152610">(+63) 927 015 2610 &mdash; WhatsApp</a>
+      </div>
+      <div class="hero-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <a href="https://www.linkedin.com/in/shaira-gulifardo-7a973115b" target="_blank">linkedin.com/in/shaira-gulifardo</a>
+      </div>
+    </div>
+    <div class="hero-cta-row">
+      <a href="#projects" class="btn-gold">See My Work</a>
+      <a href="#contact" class="btn-ghost">Get In Touch</a>
+      <a href="https://www.linkedin.com/in/shaira-gulifardo-7a973115b" target="_blank" class="btn-linkedin">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="Shaira_Gulifardo_Portfolio.pdf" download class="btn-resume">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Resume
+      </a>
+    </div>
+  </div>
+  <div class="hero-photo-col">
+    <div class="photo-frame">
+      <div class="photo-accent"></div>
+      <div class="photo-inner"><img src="shai-photo.jpg" alt="Shaira Gulifardo"/></div>
+    </div>
+    <div class="photo-tag">Manila, PH &middot; Remote-First</div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-bar"></div></div>
+</section>
+
+<section id="about">
+  <p class="s-label reveal">Who I Am</p>
+  <h2 class="display reveal">The mind behind<br/>the <em>pipeline</em></h2>
+  <div class="about-layout">
+    <div class="about-text reveal">
+      <p>Hi &mdash; I'm <strong>Shai</strong>, a Virtual Assistant and Lead Generation Specialist with a Mass Communication background and a passion for building outreach systems that actually convert.</p>
+      <p>With over <strong>2 years of HR and administrative experience</strong>, I transitioned into lead generation and built my first full operation from zero &mdash; including the ICP, SOP, two-track outreach architecture, AI-assisted evaluation workflow, and the full reporting stack.</p>
+      <p>I deliver measurable results: averaging <strong>2,000+ weekly leads at 98% data accuracy</strong>, scheduling 50+ interviews monthly, and maintaining 100% accurate records. I specialize in <strong>message-based outreach only</strong> &mdash; LinkedIn and email &mdash; crafting every touchpoint to feel personal, not automated.</p>
+      <p>I work best with founders and small teams who need someone who thinks like an operator and executes like a specialist &mdash; independently, proactively, and always on time.</p>
+      <div class="about-chips">
+        <span class="chip">&#128205; Manila, Philippines</span>
+        <span class="chip">&#128336; EST-Aligned Hours</span>
+        <span class="chip">&#127979; BA Mass Communication, 2020</span>
+        <span class="chip">&#128188; Open to Remote Roles</span>
+        <span class="chip">&#9993; Message Outreach Only</span>
+      </div>
+    </div>
+    <div class="about-sidebar reveal">
+      <div class="sidebar-block"><strong>Currently At</strong><p>Advisor Near Me (Feb 2026&ndash;Present) &mdash; VA &amp; Lead Generation Specialist. Built the lead gen function from scratch including ICP and SOPs.</p></div>
+      <div class="sidebar-block"><strong>Primary Tools</strong><p>LinkedIn Recruiter &middot; LinkedIn Sales Navigator &middot; Apollo.io &middot; Gemini &middot; Claude AI &middot; Cowork &middot; Excel &middot; PowerPoint &middot; Calendly &middot; Google Workspace &middot; Trello &middot; Canva</p></div>
+      <div class="sidebar-block"><strong>Past Experience</strong><p>Recruit Executive &middot; Dayanan Business Consultancy &middot; Same Tone Inc &middot; Fastest Bunny Manpower Agency</p></div>
+      <div class="sidebar-block"><strong>My Superpower</strong><p>Building lead generation systems from scratch &mdash; ICP, SOP, AI-assisted workflows, and message sequences that feel human at scale.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="results">
+  <p class="s-label reveal">By the Numbers</p>
+  <h2 class="display reveal">Results that <em>speak</em></h2>
+  <p class="results-sub reveal">Every number below comes from real campaigns, real pipelines, and real clients. <strong>Built from scratch, measured from day one.</strong></p>
+  <div class="results-grid">
+    <div class="result-card reveal"><div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div class="result-number">2,000+</div><div class="result-label">Leads Sourced Weekly</div><div class="result-context">Via LinkedIn Recruiter &mdash; consistently, every week</div></div>
+    <div class="result-card reveal"><div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="result-number">98%</div><div class="result-label">Data Accuracy Rate</div><div class="result-context">Across all lead lists and candidate records</div></div>
+    <div class="result-card reveal"><div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="result-number">50+</div><div class="result-label">Interviews Scheduled Monthly</div><div class="result-context">Pre-screened and booked via Calendly</div></div>
+    <div class="result-card reveal"><div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><div class="result-number">35%</div><div class="result-label">Lead Management Efficiency Gain</div><div class="result-context">From building organized Google Sheets lead databases</div></div>
+    <div class="result-card reveal"><div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="result-number">50%</div><div class="result-label">Reduction in Booking Time</div><div class="result-context">After implementing Calendly automation</div></div>
+    <div class="result-card reveal"><div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="result-number">40%</div><div class="result-label">Faster Document Retrieval</div><div class="result-context">After digitizing 200+ employee records to cloud</div></div>
+    <div class="result-card reveal"><div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="result-number">30%</div><div class="result-label">Reporting Time Saved</div><div class="result-context">By redesigning reporting templates</div></div>
+    <div class="result-card reveal"><div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div class="result-number">8</div><div class="result-label">Tracker Tabs Built from Scratch</div><div class="result-context">Full funnel visibility in one Excel workbook</div></div>
+  </div>
+  <div class="results-proof">
+    <div class="proof-card reveal"><div class="proof-card-label">How I Work Without Cold Calls</div><h4>Message-only outreach that converts</h4><p>Every lead is warmed through LinkedIn comments, personalized connection notes, and a 3-touch InMail sequence &mdash; no phone, no pressure, no cold calls ever.</p><div class="proof-tag-row"><span class="proof-tag">LinkedIn InMail</span><span class="proof-tag">Connection Notes</span><span class="proof-tag">Apollo Sequences</span></div></div>
+    <div class="proof-card reveal"><div class="proof-card-label">How I Ensure Quality at Scale</div><h4>AI-assisted evaluation, human-quality output</h4><p>Gemini tiers every prospect before I write a single word. Claude drafts the message. Cowork automates the flow. The result: 2,000+ leads weekly without losing personalization.</p><div class="proof-tag-row"><span class="proof-tag">Gemini</span><span class="proof-tag">Claude AI</span><span class="proof-tag">Cowork</span></div></div>
+    <div class="proof-card reveal"><div class="proof-card-label">How I Keep Founders Informed</div><h4>Executive-ready reports, every month</h4><p>A clean PowerPoint deck lands in the founder's inbox every month &mdash; full funnel metrics, conversion snapshot, and strategic observations. No chasing, no guessing.</p><div class="proof-tag-row"><span class="proof-tag">PowerPoint</span><span class="proof-tag">Excel KPI Tracker</span><span class="proof-tag">Smart Links</span></div></div>
+  </div>
+</section>
+
+<section id="experience">
+  <p class="s-label reveal">Career</p>
+  <h2 class="display reveal">Where I've <em>worked</em></h2>
+  <div class="exp-timeline">
+    <div class="exp-item reveal">
+      <div class="exp-dot current"></div>
+      <div class="exp-content">
+        <span class="exp-badge current-badge">Current Role</span>
+        <div class="exp-company">Advisor Near Me</div>
+        <div class="exp-role">Virtual Assistant &amp; Lead Generation Specialist</div>
+        <div class="exp-date">February 2026 &ndash; Present &middot; Florida (Remote)</div>
+        <ul class="exp-list">
+          <li>Built the lead generation function from scratch &mdash; ICP, SOPs, and two-track outreach architecture targeting Florida financial advisors and mid-career job changers</li>
+          <li>Used LinkedIn Sales Navigator to identify and qualify prospects: owners, CEOs, directors, founders, VPs, and presidents</li>
+          <li>Developed and maintained SOPs to ensure consistency and efficiency across all outreach and reporting workflows</li>
+          <li>Created personalized messages using Gemini (prospect tiering) + Claude (message drafting) + Cowork automation</li>
+          <li>Designed 8-tab Excel KPI tracker; manages LinkedIn content calendar and Smart Link funnel tracking</li>
+          <li>Produces executive-ready monthly PowerPoint reports &mdash; all message outreach only, no cold calls</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-content">
+        <span class="exp-badge">Lead Generation</span>
+        <div class="exp-company">Recruit Executive</div>
+        <div class="exp-role">Lead Generation Specialist</div>
+        <div class="exp-date">September 2025 &ndash; January 2026 &middot; Remote</div>
+        <ul class="exp-list">
+          <li>Used LinkedIn Recruiter to source and qualify prospect lists targeting owners, CEOs, directors, founders, VPs, and presidents at 98% data accuracy</li>
+          <li>Generated and qualified 2,000+ leads weekly across multiple sourcing channels</li>
+          <li>Pre-screened candidates and scheduled 50+ interviews monthly using Calendly and Google Calendar</li>
+          <li>Developed and maintained SOPs to ensure consistency across lead generation workflows</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-content">
+        <span class="exp-badge">HR &amp; Admin</span>
+        <div class="exp-company">Dayanan Business Consultancy Inc.</div>
+        <div class="exp-role">Human Resource Admin Assistant</div>
+        <div class="exp-date">February 2025 &ndash; June 2025 &middot; Philippines</div>
+        <ul class="exp-list">
+          <li>Prepared job offers and contracts for 50+ employees monthly with 100% on-time completion</li>
+          <li>Maintained employee files and monthly HR documentation, supporting audits with zero issues</li>
+          <li>Digitized HR documents, improving retrieval efficiency by 40% and reducing manual errors</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-content">
+        <span class="exp-badge">HR &amp; Operations</span>
+        <div class="exp-company">Same Tone Incorporated</div>
+        <div class="exp-role">Human Resource Specialist</div>
+        <div class="exp-date">August 2024 &ndash; February 2025 &middot; Philippines</div>
+        <ul class="exp-list">
+          <li>Built organized Google Sheets lead databases, improving lead management efficiency by 35%</li>
+          <li>Improved reporting templates, reducing preparation time by 30% and minimizing errors</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-content">
+        <span class="exp-badge">HR &amp; Recruitment</span>
+        <div class="exp-company">Fastest Bunny Manpower Agency</div>
+        <div class="exp-role">Human Resource Assistant</div>
+        <div class="exp-date">February 2023 &ndash; August 2024 &middot; Philippines</div>
+        <ul class="exp-list">
+          <li>Implemented Calendly scheduling for remote teams, reducing booking time by 50%</li>
+          <li>Migrated 200+ employee records to cloud storage, increasing data accessibility</li>
+          <li>Organized digital filing system that reduced document retrieval time by 40%</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <p class="s-label reveal">Capabilities</p>
+  <h2 class="display reveal">What I do <em>really</em><br/>well</h2>
+  <div class="skills-bento">
+    <div class="sk-card wide reveal">
+      <div class="sk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <h3>LinkedIn Outreach &mdash; Message-Based Campaigns Only</h3>
+      <p>Full two-track systems &mdash; no cold calls, ever. I use LinkedIn Recruiter and Sales Navigator to find decision-makers (owners, CEOs, directors, founders, VPs, presidents) and craft personalized connection messages and InMail sequences. Comment-first warm-up for Ideal Tier prospects.</p>
+      <div class="sk-tools"><span class="sk-tool">LinkedIn Recruiter</span><span class="sk-tool">Sales Navigator</span><span class="sk-tool">InMail</span><span class="sk-tool">A/B Testing</span><span class="sk-tool">Smart Links</span></div>
+      <div class="sk-sample"><div class="sk-sample-label">Sample &mdash; Job Changer outreach (Track 2)</div><div class="sk-sample-msg">"Congrats on the new role! Career moves usually come with financial decisions worth thinking through &mdash; 401(k) rollovers, new comp structures, equity. We match Florida professionals with vetted fiduciary advisors at no cost. Worth a look: [link]"</div></div>
+    </div>
+    <div class="sk-card reveal">
+      <div class="sk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+      <h3>AI-Assisted Lead Evaluation</h3>
+      <p>Gemini evaluates and tiers each prospect (Ideal / Qualified / Not Qualified) with confidence scores and red flags. Claude drafts the personalized message. Cowork handles automation &mdash; consistent quality at scale.</p>
+      <div class="sk-tools"><span class="sk-tool">Gemini</span><span class="sk-tool">Claude AI</span><span class="sk-tool">Cowork</span><span class="sk-tool">Prompt Engineering</span></div>
+    </div>
+    <div class="sk-card reveal">
+      <div class="sk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+      <h3>Excel Dashboards &amp; Reporting</h3>
+      <p>8-tab KPI trackers with live formulas and conditional formatting. Monthly PowerPoint reports delivered executive-ready for founder reviews &mdash; full funnel metrics from evaluated leads to conversions.</p>
+      <div class="sk-tools"><span class="sk-tool">Excel</span><span class="sk-tool">PowerPoint</span><span class="sk-tool">KPI Design</span><span class="sk-tool">Google Sheets</span></div>
+      <div class="sk-sample"><div class="sk-sample-label">Tracker tabs built</div><div class="sk-sample-msg">KPI Dashboard &middot; Evaluated Leads &middot; Advisor Connections &middot; InMail Tracker &middot; Job Changer Tracker &middot; Inbound Tracker &middot; Time Logger &middot; Apollo Tracker</div></div>
+    </div>
+    <div class="sk-card reveal">
+      <div class="sk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+      <h3>Content &amp; Brand Copywriting</h3>
+      <p>LinkedIn content calendar with Mon/Wed/Fri posting, written in first-person brand voice. Positions the brand at the intersection of AI and advisory &mdash; warm, authoritative, never salesy.</p>
+      <div class="sk-tools"><span class="sk-tool">Content Strategy</span><span class="sk-tool">Brand Voice</span><span class="sk-tool">LinkedIn Posts</span><span class="sk-tool">Canva</span></div>
+      <div class="sk-sample"><div class="sk-sample-label">Sample post hook</div><div class="sk-sample-msg">"Most people don't realize how much a job change affects their finances. New salary, different 401(k), maybe equity for the first time. Here's what I'd tell a friend to do first&hellip;"</div></div>
+    </div>
+    <div class="sk-card reveal">
+      <div class="sk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h3>Pipeline &amp; CRM Management</h3>
+      <p>End-to-end lifecycle tracking from evaluated lead to dormant &mdash; Smart Link funnel analysis, tier-based routing, and clean handoff notes to founders. Dormant tagging after the final sequence touch.</p>
+      <div class="sk-tools"><span class="sk-tool">Lead Scoring</span><span class="sk-tool">Funnel Analysis</span><span class="sk-tool">CRM Hygiene</span><span class="sk-tool">Smart Links</span><span class="sk-tool">Trello</span></div>
+    </div>
+    <div class="sk-card reveal">
+      <div class="sk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <h3>Prospect Nurture Sequences</h3>
+      <p>Three-touch InMail sequences per track &mdash; warm opener, value-add follow-up, and a final nudge before marking dormant. All message-based; no cold calls ever.</p>
+      <div class="sk-tools"><span class="sk-tool">Sequence Design</span><span class="sk-tool">Follow-up Timing</span><span class="sk-tool">Dormant Tagging</span></div>
+      <div class="sk-sample"><div class="sk-sample-label">Sample nurture &mdash; Advisor Touch 2</div><div class="sk-sample-msg">"Wanted to follow up &mdash; we're still matching pre-screened Florida clients to independent advisors. No fees, no pressure. Takes 5 minutes to see if we're a fit: [Smart Link]"</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="projects-header reveal"><p class="s-label">Portfolio</p><h2 class="display">Work I've built<br/>from <em>scratch</em></h2></div>
+  <div class="proj-grid">
+    <div class="proj-card reveal"><div class="proj-top" data-num="01"><span class="proj-badge">Lead Generation</span><h3>Two-Track LinkedIn Outreach System</h3></div><div class="proj-body"><p>Built the full lead gen function from zero &mdash; ICP, SOPs, and dual-track architecture. LinkedIn Sales Navigator targeting Florida financial advisors (Track 1) and mid-career professionals who changed jobs (Track 2). A/B connection variants and 3-touch InMail sequences per track.</p><div class="proj-results"><span class="result-pill">&#10022; ICP &amp; SOP built from scratch</span><span class="result-pill">&#10022; Dual-track architecture</span><span class="result-pill">&#10022; Strong Month 1 results</span></div><div class="proj-stack"><span class="stack-tag">Sales Navigator</span><span class="stack-tag">LinkedIn Recruiter</span><span class="stack-tag">InMail</span><span class="stack-tag">Smart Links</span></div></div><div class="proj-screenshots"><div class="proj-ss-pane"><p class="proj-ss-label">Sales Navigator Search</p><img class="proj-ss-img" src="anm-salesnav.png" alt="ANM Sales Navigator"/><p class="proj-ss-caption">CPA/Accounting Professional saved search &mdash; 7 filters: CXO/Owner seniority, Florida, Accounting &amp; Financial Services, 6&ndash;10 yrs exp, 324 results.</p></div><div class="proj-ss-pane"><p class="proj-ss-label">Sample Outreach Message</p><img class="proj-ss-img" src="anm-message.png" alt="ANM InMail sample"/><p class="proj-ss-caption">Personalized InMail referencing the prospect's specific content and expertise &mdash; leading with value, CTA drives to Join Our Network page.</p></div></div></div>
+    <div class="proj-card reveal"><div class="proj-top" data-num="02"><span class="proj-badge">AI Workflow</span><h3>Gemini &rarr; Claude Lead Evaluation Pipeline</h3></div><div class="proj-body"><p>Two-step AI workflow: Gemini classifies each prospect by tier with confidence scores and red flags. Claude drafts a tailored message. Cowork handles automation &mdash; consistent, personalized quality at scale.</p><div class="proj-results"><span class="result-pill">&#10022; Tier classification system</span><span class="result-pill">&#10022; Automated via Cowork</span><span class="result-pill">&#10022; Human quality at scale</span></div><div class="proj-stack"><span class="stack-tag">Gemini</span><span class="stack-tag">Claude AI</span><span class="stack-tag">Cowork</span><span class="stack-tag">Prompt Engineering</span></div></div></div>
+    <div class="proj-card reveal"><div class="proj-top" data-num="03"><span class="proj-badge">Analytics</span><h3>Multi-Tab KPI Tracker &amp; LinkedIn Content Calendar</h3></div><div class="proj-body"><p>Comprehensive Excel workbook with 8 tracking tabs covering every funnel stage. Live formulas, conditional formatting, and an integrated LinkedIn content calendar for consistent Mon/Wed/Fri posting schedules.</p><div class="proj-results"><span class="result-pill">&#10022; 8-tab funnel tracker</span><span class="result-pill">&#10022; Live KPI dashboard</span><span class="result-pill">&#10022; Content calendar built-in</span></div><div class="proj-stack"><span class="stack-tag">Excel</span><span class="stack-tag">Google Sheets</span><span class="stack-tag">Conditional Formatting</span></div></div></div>
+    <div class="proj-card reveal"><div class="proj-top" data-num="04"><span class="proj-badge">Executive Reporting</span><h3>Monthly Outreach Report &mdash; PowerPoint Deck</h3></div><div class="proj-body"><p>Executive-ready monthly PowerPoint deck covering full funnel metrics &mdash; evaluated leads, connections sent, InMail responses, and conversions. A clear performance snapshot for the founder, every month, no chasing.</p><div class="proj-results"><span class="result-pill">&#10022; Executive-ready deck</span><span class="result-pill">&#10022; Full funnel metrics</span><span class="result-pill">&#10022; Navy &amp; gold branded</span></div><div class="proj-stack"><span class="stack-tag">PowerPoint</span><span class="stack-tag">Executive Reporting</span><span class="stack-tag">Funnel Analysis</span></div></div></div>
+    <div class="proj-card reveal"><div class="proj-top" data-num="05"><span class="proj-badge">Freelance &middot; Mental Health</span><h3>LinkedIn Lead Gen Campaign &mdash; Brain Based EMDR Training</h3></div><div class="proj-body"><p>Freelance campaign for a licensed EMDR training provider. Built a LinkedIn Sales Navigator outreach campaign targeting mental health clinicians &mdash; developed ICP, segmented 3 audience types (individual clinicians, group practices, universities), wrote personalized InMails, and delivered weekly performance reports to the client.</p><div class="proj-results"><span class="result-pill">&#10022; ICP &amp; 3-audience segmentation</span><span class="result-pill">&#10022; InMail-only campaign</span><span class="result-pill">&#10022; Weekly client reports</span></div><div class="proj-stack"><span class="stack-tag">Sales Navigator</span><span class="stack-tag">InMail</span><span class="stack-tag">Gemini AI</span><span class="stack-tag">Client Reporting</span></div></div><div class="proj-screenshots"><div class="proj-ss-pane"><p class="proj-ss-label">Sales Navigator Search</p><img class="proj-ss-img" src="libby-salesnav.png" alt="Libby EMDR Sales Navigator"/><p class="proj-ss-caption">Individual Clinicians Bay Area &mdash; trauma/PTSD keywords, LCSW/Therapist titles, Mental Health Care, 3&ndash;5 yrs, 314 results.</p></div><div class="proj-ss-pane"><p class="proj-ss-label">Sample Outreach Message</p><img class="proj-ss-img" src="libby-message.png" alt="Libby EMDR InMail"/><p class="proj-ss-caption">Single-touch InMail referencing the prospect's clinical focus on performance trauma &mdash; connecting their expertise to the EMDR training offering.</p></div></div></div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <p class="s-label reveal">Kind Words</p>
+  <h2 class="display reveal">What people <em>say</em></h2>
+  <div class="testi-layout">
+    <div class="testi-card reveal"><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-quote">"Shai built our entire lead gen operation from zero &mdash; the ICP, the SOPs, the outreach system, the AI workflow, the tracker, the reports. She works independently and delivers consistently."</p><div class="testi-person"><div class="testi-avatar">W</div><div><div class="testi-name">William</div><div class="testi-role">Founder, Advisor Near Me</div></div></div></div>
+    <div class="testi-card reveal"><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-quote">"What impressed me most was how Shai thinks about messaging &mdash; she leads with what the prospect actually cares about, not a pitch. That's rare, and it shows in the response rates."</p><div class="testi-person"><div class="testi-avatar">R</div><div><div class="testi-name">Rafael M.</div><div class="testi-role">Business Development, Dayanan Consultancy</div></div></div></div>
+    <div class="testi-card reveal"><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-quote">"Shai doesn't wait to be told what to do &mdash; she spots gaps, proposes solutions, and executes. Her reporting is always clean, on time, and founder-ready."</p><div class="testi-person"><div class="testi-avatar">A</div><div><div class="testi-name">Andrea T.</div><div class="testi-role">Operations Lead, Recruit Executive</div></div></div></div>
+  </div>
+</section>
+
+<section id="contact">
+  <p class="s-label reveal">Let's Talk</p>
+  <h2 class="display reveal">Ready to build<br/>something <em>great?</em></h2>
+  <div class="contact-grid">
+    <div class="contact-left reveal">
+      <p>Whether you're a founder who needs a lead gen system built end-to-end, or a growing team looking for a VA who thinks like a strategist &mdash; I'd love to hear what you're working on.</p>
+      <p>Open to part-time and full-time remote engagements, aligned with US EST hours from Manila. <strong style="color:var(--gold-light)">Message outreach only &mdash; no cold calls.</strong></p>
+      <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></div><div><strong>Email</strong><a href="mailto:gulifardoshaira@gmail.com">gulifardoshaira&#64;gmail.com</a></div></div>
+      <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div><div><strong>WhatsApp</strong><a href="https://wa.me/639270152610">(+63) 927 015 2610</a></div></div>
+      <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/shaira-gulifardo-7a973115b" target="_blank">linkedin.com/in/shaira-gulifardo-7a973115b</a></div></div>
+      <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><strong>Location</strong><span>Manila, Philippines &mdash; Remote Only</span></div></div>
+    </div>
+    <div class="contact-form reveal">
+      <form id="contactForm" action="https://formspree.io/f/meevjrvz" method="POST">
+        <div class="form-row">
+          <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="Jane Smith" required/></div>
+          <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="jane@company.com" required/></div>
+        </div>
+        <div class="form-group"><label>How can I help?</label>
+          <select name="service">
+            <option value="">Select a service...</option>
+            <option>LinkedIn Outreach Campaign</option>
+            <option>Cold Email Setup (Apollo.io)</option>
+            <option>AI-Assisted Lead Evaluation</option>
+            <option>Excel Tracker / KPI Dashboard</option>
+            <option>Monthly Reporting (PowerPoint)</option>
+            <option>Content Strategy &amp; Copywriting</option>
+            <option>SOP Development</option>
+            <option>Full VA Support</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Tell me about your project</label><textarea name="message" placeholder="What are you building? Who are you trying to reach? What's your timeline?"></textarea></div>
+        <input type="hidden" name="_subject" value="New portfolio inquiry - Shaira Gulifardo"/>
+        <input type="text" name="_gotcha" style="display:none"/>
+        <button type="submit" class="btn-submit" id="submitBtn">Send Message</button>
+        <p class="form-note">Your message goes directly to my Gmail. I respond within 24 hours.</p>
+        <div class="form-success" id="formSuccess">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>Message sent! I'll get back to you within 24 hours.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Shaira <span>&#10022;</span></div>
+  <p>&copy; 2026 <span>Shaira Gulifardo</span> &middot; VA &amp; Lead Generation Specialist &middot; Manila, Philippines</p>
+</footer>
+
+<script>
+var revealEls = document.querySelectorAll(".reveal");
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("in");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+revealEls.forEach(function(el) {
+  var parent = el.parentElement;
+  if (parent) {
+    var siblings = Array.from(parent.querySelectorAll(".reveal"));
+    var idx = siblings.indexOf(el);
+    el.style.transitionDelay = idx > 0 ? (idx * 0.07) + "s" : "0s";
+  }
+  observer.observe(el);
+});
+
+var form = document.getElementById("contactForm");
+var btn = document.getElementById("submitBtn");
+var successBox = document.getElementById("formSuccess");
+
+if (form && btn && successBox) {
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    btn.textContent = "Sending...";
+    btn.disabled = true;
+    var formData = new FormData(form);
+    fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: { "Accept": "application/json" }
+    }).then(function(res) {
+      if (res.ok) {
+        form.reset();
+        successBox.classList.add("show");
+        btn.style.display = "none";
+        setTimeout(function() {
+          successBox.classList.remove("show");
+          btn.style.display = "";
+          btn.textContent = "Send Message";
+          btn.disabled = false;
+        }, 6000);
+      } else {
+        btn.textContent = "Send Message";
+        btn.disabled = false;
+        alert("Something went wrong. Please email me directly at gulifardoshaira@gmail.com");
+      }
+    }).catch(function() {
+      btn.textContent = "Send Message";
+      btn.disabled = false;
+      alert("Something went wrong. Please email me directly at gulifardoshaira@gmail.com");
+    });
+  });
+}
+</script>
+</body>
+</html>
